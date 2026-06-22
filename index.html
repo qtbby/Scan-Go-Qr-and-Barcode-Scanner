@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scan&Go</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="setup-screen" class="screen active">
+        <div class="setup-container">
+            <h2>Event Attendance</h2>
+            <p class="setup-subtitle">Choose how to begin</p>
+            <div class="setup-buttons">
+                <button id="btn-sheet-ready" class="btn btn-primary">I have a sheet ready</button>
+                <button id="btn-no-sheet" class="btn btn-secondary">I don't have a sheet ready</button>
+            </div>
+            <input type="file" id="file-input" accept=".xlsx,.xls,.csv" style="display: none;">
+            <p id="upload-status" class="status-text"></p>
+        </div>
+    </div>
+
+    <div id="column-modal" class="modal">
+        <div class="modal-content">
+            <h3>Define Columns</h3>
+            <p>First column is used as the identifier (e.g., Name or ID).</p>
+            <div id="columns-list"></div>
+            <button id="btn-add-column" class="btn btn-small">+ Add Column</button>
+            <div class="modal-actions">
+                <button id="btn-save-columns" class="btn btn-primary">Save & Start</button>
+                <button id="btn-cancel-columns" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="time-modal" class="modal">
+        <div class="modal-content">
+            <h3>Scan Time Rules</h3>
+            <div class="time-group">
+                <label style="font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+                    <input type="checkbox" id="enforce-time"> Enforce Time Limits
+                </label>
+            </div>
+            <div class="time-group">
+                <h4>Scan IN Allowed Between:</h4>
+                <input type="time" id="in-start"> to <input type="time" id="in-end">
+            </div>
+            <div class="time-group">
+                <h4>Scan OUT Allowed Between:</h4>
+                <input type="time" id="out-start"> to <input type="time" id="out-end">
+            </div>
+            <div class="modal-actions">
+                <button id="btn-save-times" class="btn btn-primary">Save Rules</button>
+                <button id="btn-cancel-times" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="scanner-screen" class="screen">
+        <header class="top-bar">
+            <h2 class="app-title">QR Scanner</h2>
+            <div>
+                <button id="btn-time-rules" class="btn-icon" title="Set Time Rules">⏱️</button>
+                <button id="btn-edit-columns" class="btn-icon" title="Edit columns">⚙️</button>
+                <button id="btn-reset" class="btn-icon" title="Start over">↩️</button>
+            </div>
+        </header>
+        <div id="scanner-wrapper">
+            <div id="reader"></div>
+            <div class="camera-switch-container">
+                <button id="btn-switch-camera" class="btn btn-small">Switch Camera</button>
+            </div>
+        </div>
+        <section class="data-section">
+            <h3>Attendance Records</h3>
+            <div id="attendance-table-container" class="table-wrapper">
+                </div>
+            <button id="btn-export-csv" class="btn btn-small">Export CSV</button>
+        </section>
+    </div>
+
+    <div id="coffee-float" class="coffee-float">
+        <span class="coffee-text">☕ Buy me a coffee</span>
+        <button id="btn-close-coffee" class="btn-close-coffee">&times;</button>
+    </div>
+
+    <div id="coffee-modal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <h3>Buy me a coffee ☕</h3>
+            <p style="color: #7f8c8d; margin-top: 5px;">If you find this scanner helpful, consider supporting!</p>
+            
+            <div style="margin: 1.5rem 0;">
+                <img src="gcashqr.jpg" alt="E-Wallet QR" style="max-width: 200px; border-radius: 10px; border: 1px solid #ccc; padding: 10px; display: block; margin: 0 auto;">
+                
+                <p style="margin-top: 1rem; font-weight: bold; color: #2c3e50;">GCash / Maya</p>
+                <p style="font-size: 1.1rem; letter-spacing: 1px;">📱 (+63) 953-563-8614</p>
+            </div>
+
+            <div class="modal-actions" style="justify-content: center;">
+                <button id="btn-close-coffee-modal" class="btn btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+
+    <script src="sound.js"></script>
+    <script src="datamanger.js"></script>
+    <script src="ui.js"></script>
+    <script src="sheetManager.js"></script>
+    <script src="scanner.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
