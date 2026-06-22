@@ -5,7 +5,7 @@ Perfect for the sidebar description field on the right side of your repository (
 
 A lightweight, powerful, serverless web application designed to track event or workspace attendance using **QR Codes** and **1D Barcodes**. This tool runs entirely in the browser, stores your records safely in `localStorage` so data isn't lost on page refresh, and operates perfectly across mobile devices and desktops.
 
-🚀 **[CLICK HERE TO VIEW LIVE DEMO](https://your-temporary-website-link.netlify.app)** *(Replace this with your real link once deployed!)*
+🚀 **[CLICK HERE TO VIEW LIVE DEMO](https://your-temporary-website-link.netlify.app)**
 
 ---
 
